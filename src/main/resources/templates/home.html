@@ -1,0 +1,42 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Collagify</title>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<link href="../static/css/style.css" th:href="@{/css/style.css} "
+	rel="stylesheet" />
+</head>
+
+<body>
+
+	<div class="container d-flex h-100 text-center">
+		<div class="containter-fluid justify-content-center align-self-center mx-auto">
+			<img class="img-fluid center-block my-2"
+				th:src="@{/images/mockups.png}">
+			<h1 class="my-2">Collagify</h1>
+			<h3 class="my-2">Collage of Album Art Based on Your Top Spotify Artists</h3>
+			<a class="btn btn-primary btn-lg my-2"
+				href="/oauth2/authorization/spotify" role="button">Get Started</a>
+		</div>
+	</div>
+
+</body>
+
+
+
+</html>
+
+

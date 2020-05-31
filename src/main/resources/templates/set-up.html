@@ -1,0 +1,101 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+<link th:rel="stylesheet"
+	th:href="@{/assets/bootstrap-colorpicker/css/bootstrap-colorpicker.css} " />
+<link href="../static/css/style.css" th:href="@{/css/style.css} "
+	rel="stylesheet" />
+</head>
+
+<body>
+
+	<div class="container d-flex h-100 mx-auto">
+		<div
+			class="containter-fluid justify-content-center align-self-center mx-auto">
+			<form th:action="@{/collage}" method="POST"
+				th:object="${selectionDto}">
+				<h1>Set Up Your Album Collage</h1>
+
+				<div class="form-group">
+					<div class="row mx-auto">
+						<div class="col-3">
+							<label class="my-2" for=rows>Rows</label> <input
+								class="form-control" type="number" th:field="*{rows}" id=rows
+								min=1 max=5>
+							<p th:if="${#fields.hasErrors('rows')}" th:errors="*{rows}"
+								class="alert alert-danger"></p>
+						</div>
+
+						<div class="col-3">
+							<label class="my-2" for=columns>Columns</label> <input
+								class="form-control" type="number" th:field="*{columns}"
+								id=columns min=1 max=5>
+							<p th:if="${#fields.hasErrors('columns')}" th:errors="*{columns}"
+								class="alert alert-danger"></p>
+						</div>
+						
+						<div class="col-6">
+							<div class="form-group">
+
+								<label for="backgroundColorPicker" class="my-2">Background Color</label>
+
+								<div id=backgroundColorPicker class="form-group">
+									<input type="text" class="btn btn-outline-secondary form-control"
+										id="backgroundColorPicker" th:field="*{hex}"
+										readonly="readonly">
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row justify-content-center">
+						<button class="btn btn-primary btn-lg" type="submit">Create
+							my Album Collage</button>
+					</div>
+				</div>
+
+				<input type="hidden" th:field="*{displayHeight}" id=displayHeight>
+
+				<input type="hidden" th:field="*{displayWidth}" id=displayWidth>
+
+			</form>
+		</div>
+
+	</div>
+
+
+	<script
+		th:src="@{/assets/bootstrap-colorpicker/js/bootstrap-colorpicker.js}"></script>
+
+	<script th:inline="javascript">
+		var scale = window.devicePixelRatio;
+
+		var displayW = screen.width * scale;
+
+		var displayH = screen.height * scale;
+
+		document.getElementById("displayWidth").value = displayW;
+
+		document.getElementById("displayHeight").value = displayH;
+
+		$(function() {
+			$('#backgroundColorPicker').colorpicker();
+		});
+	</script>
+</body>
+
+</html>
